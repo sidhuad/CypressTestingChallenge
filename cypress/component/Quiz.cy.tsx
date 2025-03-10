@@ -7,24 +7,7 @@ describe('<Quiz />', () => {
     // Stub the API call to return mock questions
     cy.intercept('GET', '/api/questions/random', {
       statusCode: 200,
-      body:[
-        {
-          question: 'What is 2 + 2?',
-          answers: [
-            { text: '3', isCorrect: false },
-            { text: '4', isCorrect: true },
-            { text: '5', isCorrect: false },
-          ],
-        },
-        {
-          question: 'What is 3 + 3?',
-          answers: [
-            { text: '5', isCorrect: false },
-            { text: '6', isCorrect: true },
-            { text: '7', isCorrect: false },
-          ],
-        },
-      ],
+      fixture: 'questions.json'
     }).as('getQuestions');
   });
   it('renders', () => {
